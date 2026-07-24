@@ -4,7 +4,7 @@
  AI-powered Emergency Decision Intelligence Platform
 </p>
 
-## Overview
+## ➡️Overview
 Sentinel AI is an AI-powered emergency response platform that enables citizens to report incidents in real time while automatically analyzing severity, classifying emergencies, recommending the appropriate responder department, and generating public safety advisories using Google Gemini AI.
 
 - Frontend: React + Vite
@@ -13,7 +13,7 @@ Sentinel AI is an AI-powered emergency response platform that enables citizens t
 - AI: Google Gemini API
 - Deployment: Vercel frontend, Render backend
 
-## Features
+## ➡️Features
 
 - Citizen and responder authentication
 - Citizen incident reporting with optional image/audio upload
@@ -26,7 +26,7 @@ Sentinel AI is an AI-powered emergency response platform that enables citizens t
 - Responder dashboard showing assigned/relevant incidents with status updates
 - Clean PostgreSQL schema and reset scripts for a fresh cloud database
 
-## AI Capabilities
+## ➡️AI Capabilities
 
 - Incident severity prediction
 - Emergency classification
@@ -37,7 +37,7 @@ Sentinel AI is an AI-powered emergency response platform that enables citizens t
 - Image-assisted incident analysis
 - Local fallback if Gemini is unavailable
 
-## Tech Stack
+## ➡️Tech Stack
 
 Frontend
 - React
@@ -59,7 +59,7 @@ Deployment
 - Vercel
 - Render
 
-## System Architecture
+## ➡️System Architecture
 
 ```text
 Citizen
@@ -109,7 +109,7 @@ For Vercel:
 VITE_API_URL=https://your-render-backend.onrender.com
 ```
 
-## Gemini API Setup
+## ➡️Gemini API Setup
 
 1. Open [Google AI Studio](https://aistudio.google.com/app/apikey).
 2. Create an API key.
@@ -118,7 +118,7 @@ VITE_API_URL=https://your-render-backend.onrender.com
 
 The backend loads `backend/.env` directly, so Gemini works whether you start FastAPI from the project root or from the backend folder. If the key is missing, left as the placeholder value, or Gemini throws an error, the app uses the local fallback so reporting still works.
 
-## Supabase Database Setup
+## ➡️Supabase Database Setup
 
 1. Create a free project at [Supabase](https://supabase.com).
 2. Open **Project Settings > Database**.
@@ -137,7 +137,7 @@ cd backend
 
 This removes all app records from `users`, `incidents`, and `responder_assignments`.
 
-## Run Locally
+## ➡️Run Locally
 
 Backend:
 
@@ -166,7 +166,7 @@ Backend:  http://localhost:8000
 Frontend: http://localhost:5173
 ```
 
-## Incident Flow
+## ➡️Incident Flow
 
 1. Citizen submits a report.
 2. Backend analyzes it with Gemini first.
@@ -178,7 +178,7 @@ Frontend: http://localhost:5173
 
 ## 🚀 Deployment Guide
 
-## Backend Deployment(Render)
+## ➡️Backend Deployment(Render)
 
 1. Push the project to GitHub.
 2. Open [Render](https://render.com).
@@ -199,7 +199,7 @@ FRONTEND_ORIGIN=https://your-vercel-app.vercel.app
 
 Deploy, then open `/health` on the Render URL to confirm the API is running.
 
-## Frontend Deployment (Vercel)
+## ➡️Frontend Deployment (Vercel)
 
 1. Open [Vercel](https://vercel.com).
 2. Import your GitHub repository.
@@ -214,7 +214,7 @@ VITE_API_URL=https://your-render-backend.onrender.com
 
 Deploy the frontend after the backend URL is live.
 
-## Final Test Checklist
+## ➡️Final Test Checklist
 
 1. Run `backend/schema.sql` in Supabase.
 2. Run `backend/reset_database.sql` once to clear old data.
@@ -224,3 +224,8 @@ Deploy the frontend after the backend URL is live.
 6. Submit an SOS alert and confirm every responder sees it at the top.
 7. Accept, update, and resolve an incident from a responder account.
 8. Refresh both dashboards and confirm the data persists from Supabase.
+
+## ➡️Team
+
+- [Kruthika C](https://github.com/kruthikaC07) 
+- [Rakshitha R S](https://github.com/rakshithaagowda) 
