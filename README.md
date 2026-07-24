@@ -26,6 +26,31 @@ Sentinel AI is an AI-powered emergency response platform that enables citizens t
 - Responder dashboard showing assigned/relevant incidents with status updates
 - Clean PostgreSQL schema and reset scripts for a fresh cloud database
 
+## ➡️Screenshots
+
+### 🔗Registration
+<img width="1862" height="910" alt="sign up" src="https://github.com/user-attachments/assets/bbd440b7-b8ed-44d6-b382-7da511fefbcb" />
+
+### 🔗Citizen Dashboard
+<img width="1867" height="907" alt="citizen_dashboard_screenshot" src="https://github.com/user-attachments/assets/b0f8ca94-21af-49d3-af74-cfd2642de01c" />
+<img width="1820" height="907" alt="citizen_dashboard_screenshot_2" src="https://github.com/user-attachments/assets/cd4c19d5-48d5-481e-b792-2b999faca522" />
+
+### 🔗Incident Reporting
+<img width="1860" height="917" alt="submitting" src="https://github.com/user-attachments/assets/69c1425d-d05b-4837-839f-73fca42de891" />
+
+### 🔗AI Incident Analysis
+<img width="1857" height="887" alt="report_screenshot" src="https://github.com/user-attachments/assets/c15f0b65-3af0-4b26-8f19-00b154de8cfb" />
+<img width="1851" height="895" alt="report_screenshot_2" src="https://github.com/user-attachments/assets/42eafc8d-06ec-46be-bf21-46db0c072e69" />
+<img width="1847" height="897" alt="report_screenshot_3" src="https://github.com/user-attachments/assets/39528525-017f-4fac-ae7b-cece0523266c" />
+<img width="1802" height="886" alt="report_screenshot_4" src="https://github.com/user-attachments/assets/438ce7ae-68a3-4a8f-ae88-8e1860a115c7" />
+<img width="1852" height="871" alt="report_screenshot_5" src="https://github.com/user-attachments/assets/2e4059df-7854-458e-b176-2053bc19b8bd" />
+
+### 🔗Responder Dashboard
+<img width="1861" height="897" alt="responder_dashboard_screenshot" src="https://github.com/user-attachments/assets/1ce40493-ce40-4316-9e8b-a31c8148e60f" />
+
+
+
+
 ## ➡️AI Capabilities
 
 - Incident severity prediction
