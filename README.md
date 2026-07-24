@@ -1,5 +1,10 @@
 # Sentinel AI
 
+<p align="center">
+ AI-powered Emergency Decision Intelligence Platform
+</p>
+
+## Overview
 Sentinel AI is an AI-powered emergency response platform that enables citizens to report incidents in real time while automatically analyzing severity, classifying emergencies, recommending the appropriate responder department, and generating public safety advisories using Google Gemini AI.
 
 - Frontend: React + Vite
@@ -17,6 +22,7 @@ Sentinel AI is an AI-powered emergency response platform that enables citizens t
 - Department classification and responder routing
 - SOS routing to every responder department
 - Citizen dashboard showing all reported incidents
+- AI-generated public safety advisories after incident reporting
 - Responder dashboard showing assigned/relevant incidents with status updates
 - Clean PostgreSQL schema and reset scripts for a fresh cloud database
 
@@ -108,7 +114,7 @@ VITE_API_URL=https://your-render-backend.onrender.com
 1. Open [Google AI Studio](https://aistudio.google.com/app/apikey).
 2. Create an API key.
 3. Add it to `backend/.env` as `GEMINI_API_KEY`.
-4. Keep `GEMINI_MODEL=gemini-3.5-flash` unless you intentionally change models.
+4. Keep `GEMINI_MODEL=gemini-2.5-flash` unless you intentionally change models.
 
 The backend loads `backend/.env` directly, so Gemini works whether you start FastAPI from the project root or from the backend folder. If the key is missing, left as the placeholder value, or Gemini throws an error, the app uses the local fallback so reporting still works.
 
@@ -170,7 +176,9 @@ Frontend: http://localhost:5173
 6. SOS reports are marked Critical and assigned to every available responder.
 7. Dashboards fetch the latest data from the API; responder dashboard also polls for updates.
 
-## Render Backend Deployment
+## 🚀 Deployment Guide
+
+## Backend Deployment(Render)
 
 1. Push the project to GitHub.
 2. Open [Render](https://render.com).
@@ -191,7 +199,7 @@ FRONTEND_ORIGIN=https://your-vercel-app.vercel.app
 
 Deploy, then open `/health` on the Render URL to confirm the API is running.
 
-## Vercel Frontend Deployment
+## Frontend Deployment (Vercel)
 
 1. Open [Vercel](https://vercel.com).
 2. Import your GitHub repository.
