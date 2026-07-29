@@ -13,6 +13,10 @@ Sentinel AI is an AI-powered emergency response platform that enables citizens t
 - AI: Google Gemini API
 - Deployment: Vercel frontend, Render backend
 
+## ➡️ Project Updates
+
+Sentinel AI is continuously evolving with feature enhancements, UI/UX improvements, performance optimizations, and new capabilities to improve the overall user experience and emergency response workflow.
+
 ## ➡️Features
 
 - Citizen and responder authentication
