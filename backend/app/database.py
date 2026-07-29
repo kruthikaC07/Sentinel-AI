@@ -16,7 +16,7 @@ class DatabaseNotConfigured(RuntimeError):
 def _database_url() -> str:
     database_url = os.getenv("DATABASE_URL", "").strip()
     if not database_url or database_url.lower() in {"none", "null", "undefined"}:
-        raise DatabaseNotConfigured("DATABASE_URL is required. Configure your Supabase PostgreSQL connection string.")
+        raise DatabaseNotConfigured("DATABASE_URL is required. Configure your Neon PostgreSQL connection string.")
     return database_url
 
 
