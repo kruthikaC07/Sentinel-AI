@@ -5,11 +5,11 @@
 </p>
 
 ## ➡️Overview
-Sentinel AI is an AI-powered emergency response platform that enables citizens to report incidents in real time while automatically analyzing severity, classifying emergencies, recommending the appropriate responder department, and generating public safety advisories using Google Gemini AI.
+Sentinel AI is an AI-powered emergency response platform that enables citizens to report incidents in real time while automatically analyzes incident severity, classifies emergencies, recommends the appropriate responder department, and generates public safety advisories using Google Gemini AI.
 
 - Frontend: React + Vite
 - Backend: FastAPI
-- Database: Supabase PostgreSQL Free
+- Database: Neon PostgreSQL Free
 - AI: Google Gemini API
 - Deployment: Vercel frontend, Render backend
 
@@ -18,7 +18,7 @@ Sentinel AI is an AI-powered emergency response platform that enables citizens t
 - Citizen and responder authentication
 - Citizen incident reporting with optional image/audio upload
 - One-tap SOS emergency alerts
-- Gemini-first incident analysis with local fallback only when Gemini is not configured or fails
+- AI-powered incident analysis with automatic local fallback when Gemini is unavailable.
 - Department classification and responder routing
 - SOS routing to every responder department
 - Citizen dashboard showing all reported incidents
@@ -64,23 +64,23 @@ Sentinel AI is an AI-powered emergency response platform that enables citizens t
 
 ## ➡️Tech Stack
 
-Frontend
+### Frontend
 - React
 - Vite
 - JavaScript
 - Tailwind CSS
 
-Backend
+### Backend
 - FastAPI
 - Python
 
-Database
-- Supabase PostgreSQL
+### Database
+- Neon PostgreSQL
 
-Artificial Intelligence
+### Artificial Intelligence
 - Google Gemini 2.5 Flash
 
-Deployment
+### Deployment
 - Vercel
 - Render
 
@@ -96,11 +96,12 @@ React + Vite Frontend
 FastAPI Backend
     │
     ├── Google Gemini 2.5 Flash
-    ├── Supabase PostgreSQL
+    ├── Neon PostgreSQL
     └── Emergency Routing Engine
     │
     ▼
 Responder Dashboard
+```
 
 ## Backend Environment
 
@@ -108,7 +109,7 @@ Create `backend/.env`:
 
 ```env
 APP_SECRET=replace-with-a-long-random-secret
-DATABASE_URL=postgresql://postgres:[YOUR-PASSWORD]@db.[YOUR-PROJECT-REF].supabase.co:5432/postgres?sslmode=require
+DATABASE_URL=postgresql://username:password@your-neon-host.neon.tech/neondb?sslmode=require
 GEMINI_API_KEY=your_google_ai_studio_key
 GEMINI_MODEL=gemini-2.5-flash
 FRONTEND_ORIGIN=http://localhost:5173
@@ -143,24 +144,25 @@ VITE_API_URL=https://your-render-backend.onrender.com
 
 The backend loads `backend/.env` directly, so Gemini works whether you start FastAPI from the project root or from the backend folder. If the key is missing, left as the placeholder value, or Gemini throws an error, the app uses the local fallback so reporting still works.
 
-## ➡️Supabase Database Setup
+## ➡️ Neon PostgreSQL Database Setup
 
-1. Create a free project at [Supabase](https://supabase.com).
-2. Open **Project Settings > Database**.
-3. Copy the PostgreSQL connection string.
-4. Put it in `backend/.env` as `DATABASE_URL`.
-5. Open Supabase SQL Editor.
-6. Run all SQL from `backend/schema.sql`.
-7. To start from a completely clean database, run `backend/reset_database.sql`.
+1. Create a free project at **Neon** (https://neon.com).
+2. Create a new PostgreSQL database.
+3. Open your project dashboard and navigate to **Connection Details**.
+4. Copy the PostgreSQL connection string.
+5. Add it to `backend/.env` as `DATABASE_URL`.
+6. Run all SQL from `backend/schema.sql` to create the required tables.
+7. To start with a clean database, run `backend/reset_database.sql`.
 
-You can also reset from PowerShell after configuring `DATABASE_URL`:
+You can also reset the database from PowerShell after configuring `DATABASE_URL`:
 
 ```powershell
 cd backend
 .\.venv\Scripts\python reset_database.py
 ```
 
-This removes all app records from `users`, `incidents`, and `responder_assignments`.
+This removes all application data from the `users`, `incidents`, and `responder_assignments` tables while keeping the database schema intact.
+
 
 ## ➡️Run Locally
 
@@ -195,7 +197,7 @@ Frontend: http://localhost:5173
 
 1. Citizen submits a report.
 2. Backend analyzes it with Gemini first.
-3. Backend stores the incident in Supabase PostgreSQL.
+3. Backend stores the incident in Neon PostgreSQL.
 4. Backend classifies the correct responder department.
 5. Matching available responders receive assignments.
 6. SOS reports are marked Critical and assigned to every available responder.
@@ -216,9 +218,9 @@ Frontend: http://localhost:5173
 
 ```env
 APP_SECRET=replace-with-a-long-random-secret
-DATABASE_URL=your_supabase_postgres_connection_string
+DATABASE_URL=your_neon_postgres_connection_string
 GEMINI_API_KEY=your_google_ai_studio_key
-GEMINI_MODEL=gemini-3.5-flash
+GEMINI_MODEL=gemini-2.5-flash
 FRONTEND_ORIGIN=https://your-vercel-app.vercel.app
 ```
 
@@ -241,14 +243,14 @@ Deploy the frontend after the backend URL is live.
 
 ## ➡️Final Test Checklist
 
-1. Run `backend/schema.sql` in Supabase.
+1. Run `backend/schema.sql` in Neon.
 2. Run `backend/reset_database.sql` once to clear old data.
 3. Register one citizen.
 4. Register responders for Sanitation, Water, Roads, Electrical, Fire, Medical, and Police.
 5. Submit a normal citizen report and confirm only the matching department sees it.
 6. Submit an SOS alert and confirm every responder sees it at the top.
 7. Accept, update, and resolve an incident from a responder account.
-8. Refresh both dashboards and confirm the data persists from Supabase.
+8. Refresh both dashboards and confirm the data persists from Neon.
 
 ## ➡️Team
 
