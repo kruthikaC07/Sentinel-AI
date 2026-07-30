@@ -1,11 +1,19 @@
 # Sentinel AI
 
 <p align="center">
- AI-powered Emergency Decision Intelligence Platform
+ AI-powered Incident Reporting and Decision Intelligence Platform for Emergency and Community Response.
 </p>
 
 ## ➡️Overview
-Sentinel AI is an AI-powered emergency response platform that enables citizens to report incidents in real time while automatically analyzes incident severity, classifies emergencies, recommends the appropriate responder department, and generates public safety advisories using Google Gemini AI.
+## Overview
+
+Sentinel AI is an AI-powered Incident Reporting and Decision Intelligence Platform designed to help citizens report emergencies, public safety concerns, and community infrastructure issues through a single intelligent system.
+
+The platform enables citizens to submit real-time incident reports while leveraging Google Gemini AI to analyze severity, classify incidents, recommend the appropriate response agency, and generate public safety advisories.
+
+Beyond emergency response, Sentinel AI also supports community issue reporting, allowing citizens to report civic concerns such as garbage overflow, water leakage, road damage, streetlight failures, sanitation issues, and other infrastructure-related problems. Every report is intelligently routed to the appropriate responder department for efficient resolution.
+
+For critical situations, Sentinel AI includes an Emergency SOS feature that instantly creates a high-priority incident, captures the user's current location, and alerts responders to facilitate rapid emergency response.
 
 - Frontend: React + Vite
 - Backend: FastAPI
@@ -20,15 +28,55 @@ Sentinel AI is continuously evolving with feature enhancements, UI/UX improvemen
 ## ➡️Features
 
 - Citizen and responder authentication
-- Citizen incident reporting with optional image/audio upload
-- One-tap SOS emergency alerts
-- AI-powered incident analysis with automatic local fallback when Gemini is unavailable.
-- Department classification and responder routing
-- SOS routing to every responder department
-- Citizen dashboard showing all reported incidents
-- AI-generated public safety advisories after incident reporting
-- Responder dashboard showing assigned/relevant incidents with status updates
-- Clean PostgreSQL schema and reset scripts for a fresh cloud database
+- Emergency and community issue reporting
+- Incident reporting with optional image and audio uploads
+- One-tap Emergency SOS with automatic location capture
+- AI-powered incident analysis using Google Gemini
+- Automatic severity assessment and incident prioritization
+- Intelligent department classification and responder routing
+- Community issue routing to appropriate civic departments
+- SOS routing to all available emergency responder departments
+- Citizen dashboard with incident tracking
+- Responder dashboard with assignment management and status updates
+- AI-generated public safety advisories
+- Image-assisted incident analysis
+- Local AI fallback when Gemini is unavailable
+- PostgreSQL database integration with Neon
+
+## ➡️Supported Incident Categories
+
+## Emergency SOS
+
+The Emergency SOS feature is designed for situations requiring immediate attention.
+
+When activated, Sentinel AI:
+
+- Instantly creates a high-priority incident report.
+- Automatically captures the user's current location.
+- Alerts responders for rapid emergency response.
+- Displays the incident with Critical priority on the responder dashboard.
+- Enables faster coordination during emergencies.
+
+### Emergency Incidents
+
+- Fire emergencies
+- Medical emergencies
+- Crime and public safety
+- Natural disasters
+- Women safety
+- Child safety
+- Elderly assistance
+
+### Community & Civic Issues
+
+- Garbage overflow
+- Water leakage
+- Road damage and potholes
+- Streetlight failures
+- Sanitation issues
+- Public infrastructure problems
+
+Sentinel AI automatically analyzes every submitted report, determines its severity, and routes it to the most appropriate emergency service or civic department.
 
 ## ➡️Screenshots
 
@@ -199,13 +247,13 @@ Frontend: http://localhost:5173
 
 ## ➡️Incident Flow
 
-1. Citizen submits a report.
-2. Backend analyzes it with Gemini first.
-3. Backend stores the incident in Neon PostgreSQL.
-4. Backend classifies the correct responder department.
-5. Matching available responders receive assignments.
-6. SOS reports are marked Critical and assigned to every available responder.
-7. Dashboards fetch the latest data from the API; responder dashboard also polls for updates.
+1. Citizens submit an emergency or community incident report.
+2. Reports may include descriptions, images, audio, and location.
+3. Google Gemini analyzes the report to determine severity, category, and recommended department.
+4. The incident is stored in Neon PostgreSQL.
+5. The appropriate responder department receives the assignment.
+6. Emergency SOS reports are automatically marked as Critical and routed to every available emergency responder.
+7. Citizens and responders can monitor incident progress through their respective dashboards.
 
 ## 🚀 Deployment Guide
 
