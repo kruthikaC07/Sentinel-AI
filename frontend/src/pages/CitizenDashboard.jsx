@@ -1,7 +1,7 @@
 import { Ambulance, Droplets, Flame, HeartHandshake, Lightbulb, Megaphone, PlusCircle, ShieldAlert, Siren, Trash2, TreePine, Waves } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import BackButton from "../components/BackButton.jsx";
+
 import IncidentCard from "../components/IncidentCard.jsx";
 import StatCard from "../components/StatCard.jsx";
 import { useAuth } from "../context/AuthContext.jsx";
@@ -28,7 +28,7 @@ export default function CitizenDashboard() {
 
   return (
     <main className="page">
-      <BackButton />
+      
       <section className="hero-panel grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
         <div>
           <p className="text-sm font-semibold uppercase tracking-wide text-navy-100">Citizen dashboard</p>
