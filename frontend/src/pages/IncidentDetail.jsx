@@ -11,6 +11,7 @@ export default function IncidentDetail() {
   const { user } = useAuth();
   const [incident, setIncident] = useState(null);
   const [message, setMessage] = useState("");
+  const [showDispatchModal, setShowDispatchModal] = useState(false);
 
   async function load() {
     setIncident(await api(`/incidents/${id}`));
@@ -83,7 +84,13 @@ export default function IncidentDetail() {
             <p className="mt-4 rounded-lg bg-navy-50 p-3 text-sm text-navy-900">{incident.responder_reason}</p>
             {user.role === "Responder" && (
               <div className="mt-5 space-y-3">
-                <button className="primary-button w-full" onClick={assign}><Send size={18} /> Dispatch Recommendation</button>
+                <button
+  className="primary-button w-full"
+  onClick={() => setShowDispatchModal(true)}
+>
+  <Send size={18} />
+  Dispatch Recommendation
+</button>
                 <div className="grid grid-cols-1 gap-2">
                   {["Accepted", "Rejected", "In Progress", "Resolved"].map((status) => (
                     <button key={status} className="secondary-button" onClick={() => updateStatus(status)}>
@@ -108,6 +115,69 @@ export default function IncidentDetail() {
           </div>
         </aside>
       </section>
+      {showDispatchModal && (
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+    <div className="w-full max-w-xl rounded-2xl bg-white p-6 shadow-2xl">
+
+      <h2 className="text-2xl font-bold">
+        Dispatch Recommendation
+      </h2>
+
+      <div className="mt-6 space-y-4">
+
+        <div>
+          <p className="text-sm text-slate-500">
+            Recommended Department
+          </p>
+          <p className="font-bold text-lg">
+            {incident.assigned_to}
+          </p>
+        </div>
+
+        <div>
+          <p className="text-sm text-slate-500">
+            Priority
+          </p>
+          <p className="font-semibold">
+            {incident.severity}
+          </p>
+        </div>
+
+        <div>
+          <p className="text-sm text-slate-500">
+            AI Reason
+          </p>
+          <p>
+            {incident.responder_reason}
+          </p>
+        </div>
+
+      </div>
+
+      <div className="mt-8 flex justify-end gap-3">
+
+        <button
+          className="secondary-button"
+          onClick={() => setShowDispatchModal(false)}
+        >
+          Cancel
+        </button>
+
+        <button
+          className="primary-button"
+          onClick={async () => {
+            await assign();
+            setShowDispatchModal(false);
+          }}
+        >
+          Assign Team
+        </button>
+
+      </div>
+
+    </div>
+  </div>
+)}
     </main>
   );
 }
