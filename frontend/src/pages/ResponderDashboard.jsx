@@ -1,7 +1,7 @@
 import { BellRing, RadioTower } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import BackButton from "../components/BackButton.jsx";
+
 import IncidentCard from "../components/IncidentCard.jsx";
 import StatCard from "../components/StatCard.jsx";
 import { useAuth } from "../context/AuthContext.jsx";
@@ -47,7 +47,7 @@ export default function ResponderDashboard() {
 
   return (
     <main className="page">
-      <BackButton />
+      
       <section className="hero-panel">
         <div className="flex flex-col justify-between gap-5 md:flex-row md:items-center">
           <div>
