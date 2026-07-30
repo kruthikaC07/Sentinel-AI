@@ -534,23 +534,80 @@ def update_status(incident_id: int, payload: StatusRequest, user: dict = Depends
                 )
     return {"status": payload.status}
 
-
 @app.post("/responders/assign/{incident_id}")
-def assign_responder(incident_id: int, user: dict = Depends(require_role("Responder"))):
+def assign_responder(
+    incident_id: int,
+    user: dict = Depends(require_role("Responder"))
+):
     with get_db() as db:
-        incident = row_to_dict(db.execute("SELECT * FROM incidents WHERE id = %s", (incident_id,)).fetchone())
+
+        incident = row_to_dict(
+            db.execute(
+                "SELECT * FROM incidents WHERE id = %s",
+                (incident_id,)
+            ).fetchone()
+        )
+
         if not incident:
             raise HTTPException(status_code=404, detail="Incident not found")
-        db.execute("UPDATE incidents SET status = 'Assigned', updated_at = NOW() WHERE id = %s", (incident_id,))
+
+        existing = db.execute(
+            """
+            SELECT id
+            FROM responder_assignments
+            WHERE incident_id = %s
+              AND responder_id = %s
+            """,
+            (incident_id, user["id"])
+        ).fetchone()
+
+        if existing:
+            db.execute(
+                """
+                UPDATE responder_assignments
+                SET
+                    status = 'Assigned',
+                    updated_at = NOW()
+                WHERE incident_id = %s
+                  AND responder_id = %s
+                """,
+                (incident_id, user["id"])
+            )
+
+        else:
+            db.execute(
+                """
+                INSERT INTO responder_assignments
+                (
+                    incident_id,
+                    responder_id,
+                    recommended_responder,
+                    status
+                )
+                VALUES (%s, %s, %s, 'Assigned')
+                """,
+                (
+                    incident_id,
+                    user["id"],
+                    incident["recommended_responder"] or "Disaster Response Team"
+                )
+            )
+
         db.execute(
             """
-            INSERT INTO responder_assignments (incident_id, responder_id, recommended_responder, status)
-            VALUES (%s, %s, %s, 'Assigned')
+            UPDATE incidents
+            SET
+                status='Assigned',
+                updated_at=NOW()
+            WHERE id=%s
             """,
-            (incident_id, user["id"], incident["recommended_responder"] or "Disaster Response Team"),
+            (incident_id,)
         )
-    return {"message": "Dispatch recommendation saved", "status": "Assigned"}
 
+    return {
+        "message": "Dispatch recommendation sent successfully.",
+        "status": "Assigned"
+    }
 
 @app.get("/responders/assignments")
 def responder_assignments(user: dict = Depends(require_role("Responder"))):
