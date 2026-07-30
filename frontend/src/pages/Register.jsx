@@ -31,7 +31,6 @@ export default function Register() {
     <main className="screen-center px-4">
       <form onSubmit={submit} className="auth-panel">
         <div>
-          <p className="text-sm font-bold uppercase tracking-wide text-red-600">New operator</p>
           <h1 className="mt-2 text-3xl font-bold text-navy-900">Create your Sentinel AI account</h1>
         </div>
         {error && <p className="alert">{error}</p>}
@@ -73,7 +72,7 @@ export default function Register() {
           </label>
         )}
         <button className="primary-button">Register</button>
-        <p className="text-center text-sm text-slate-600">Already registered? <Link className="link" to="/login">Login</Link></p>
+        <p className="text-center text-sm text-slate-600">Already registered? <Link className="link" to="/login">Sign in</Link></p>
       </form>
     </main>
   );
