@@ -76,10 +76,6 @@ export default function App() {
               <button className="icon-button" onClick={() => setDarkMode((value) => !value)} aria-label="Toggle dark mode" title="Toggle dark mode">
                 {darkMode ? <Sun size={18} /> : <Moon size={18} />}
               </button>
-              <button className="icon-button" onClick={handleLogout} aria-label="Log out" title="Log out">
-                <LogOut size={18} />
-                <span className="sr-only">Sign Out</span>
-              </button>
               <button className="signout-button" onClick={handleLogout}>
                 <LogOut size={16} />
                 Sign Out
