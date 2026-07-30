@@ -73,7 +73,7 @@ export default function Register() {
           </label>
         )}
         <button className="primary-button">Register</button>
-        <p className="text-center text-sm text-slate-600">Already registered? <Link className="link" to="/login">Sign in</Link></p>
+        <p className="text-center text-sm text-slate-600">Already registered? <Link className="link" to="/login">Login</Link></p>
       </form>
     </main>
   );
