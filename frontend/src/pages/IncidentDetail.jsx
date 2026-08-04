@@ -82,11 +82,11 @@ export default function IncidentDetail() {
   {["Accepted", "Rejected", "In Progress", "Resolved"].map((status) => (
     <button
       key={status}
-      className={`secondary-button ${
-        incident.status === status
-          ? "bg-green-600 text-white border-green-600"
-          : ""
-      }`}
+      className={
+  incident.status === status
+    ? "secondary-button-active"
+    : "secondary-button"
+}
       onClick={() => updateStatus(status)}
     >
       <CheckCircle2 size={17} />

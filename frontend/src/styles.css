@@ -164,6 +164,18 @@ body {
   padding: 0 14px;
 }
 
+.secondary-button-active {
+  min-height: 40px;
+  border: 1px solid #16a34a !important;
+  background: #16a34a !important;
+  color: #ffffff !important;
+  padding: 0 14px;
+}
+
+.secondary-button-active:hover {
+  background: #15803d !important;
+}
+
 .dark .secondary-button,
 .dark .icon-button,
 .dark .segmented {
