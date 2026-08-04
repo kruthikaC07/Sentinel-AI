@@ -1,4 +1,4 @@
-import { CheckCircle2, Phone, Send, ShieldAlert, Siren } from "lucide-react";
+import { CheckCircle2, Phone, ShieldAlert, Siren } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import BackButton from "../components/BackButton.jsx";
@@ -20,12 +20,7 @@ export default function IncidentDetail() {
     load().catch(console.error);
   }, [id]);
 
-  async function assign() {
-    const response = await api(`/responders/assign/${id}`, { method: "POST" });
-    setMessage(response.message);
-    await load();
-  }
-
+  
   async function updateStatus(status) {
     await api(`/incidents/${id}/status`, { method: "PATCH", body: { status } });
     setMessage(`Incident marked ${status}`);
@@ -82,17 +77,24 @@ export default function IncidentDetail() {
             </dl>
             <p className="mt-4 rounded-lg bg-navy-50 p-3 text-sm text-navy-900">{incident.responder_reason}</p>
             {user.role === "Responder" && (
-              <div className="mt-5 space-y-3">
-                <button className="primary-button w-full" onClick={assign}><Send size={18} /> Dispatch Recommendation</button>
-                <div className="grid grid-cols-1 gap-2">
-                  {["Accepted", "Rejected", "In Progress", "Resolved"].map((status) => (
-                    <button key={status} className="secondary-button" onClick={() => updateStatus(status)}>
-                      <CheckCircle2 size={17} />
-                      {status}
-                    </button>
-                  ))}
-                </div>
-              </div>
+              <div className="mt-5">
+  <div className="grid grid-cols-1 gap-2">
+  {["Accepted", "Rejected", "In Progress", "Resolved"].map((status) => (
+    <button
+      key={status}
+      className={`secondary-button ${
+        incident.status === status
+          ? "bg-green-600 text-white border-green-600"
+          : ""
+      }`}
+      onClick={() => updateStatus(status)}
+    >
+      <CheckCircle2 size={17} />
+      {status}
+    </button>
+  ))}
+</div>
+</div>
             )}
           </div>
           <div className="panel">
